@@ -1,0 +1,23 @@
+// {
+//     "plugins": [
+//       ["module-resolver", {
+//         "root": ["./src"],
+//         "alias": {
+//           "test": "./test",
+//           "underscore": "lodash"
+//         }
+//       }]
+//     ]
+//   }
+
+// không nên để root vì lúc import sẽ như thư viện gốc 'react' không phân biệt được thư viện ta import vào.
+// Dùng alias:  "~": "./src" để import "~/App.js" <=> "./src/App.js"
+{
+    "plugins": [
+      ["module-resolver", {
+        "alias": {
+          "~": "./src"
+        }
+      }]
+    ]
+  }
