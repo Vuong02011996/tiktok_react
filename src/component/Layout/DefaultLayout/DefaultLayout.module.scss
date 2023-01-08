@@ -1,0 +1,13 @@
+.wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container {
+    width: var(--default-layout-width);
+    display: flex;
+}
+.content {
+    // cho phần content chiếm hết diện tích còn lại của container(1150 - 356), sử dụng flex : 1
+    flex: 1;
+}

@@ -1,0 +1,10 @@
+// CSS cho cái khung dropdown (base) còn bên trong css cho thèn children
+.wrapper {
+    width: 100%; // để with 100% để tùy chỉnh thay đổi chiều rộng ở những vị trí khác nhau, ăn theo thẻ cha(search-result)
+    max-height: min((100vh - 96px) - 60px, 734px); // để không bị tràn lên trên
+    min-height: 100px;
+    padding-top: 8px;
+    border-radius: 8px;
+    background: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 12%) 0px 2px 12px;
+}
