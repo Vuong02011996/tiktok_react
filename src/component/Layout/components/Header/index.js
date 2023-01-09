@@ -9,8 +9,15 @@ import {
     faEarthAsia,
     faCircleQuestion,
     faKeyboard,
+    faUser,
+    faCoins,
+    faGear,
+    faSignOut,
+    faCloudUpload,
 } from '@fortawesome/free-solid-svg-icons';
-import Tippy from '@tippyjs/react/headless';
+import HeadlessTippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css'; // optional
 
 import { Wrapper as PopperWrapper } from '~/component/Popper';
 import Menu from '~/component/Popper/Menu';
@@ -69,6 +76,32 @@ const MENU_ITEMS = [
     },
 ];
 
+const userMenu = [
+    {
+        icon: <FontAwesomeIcon icon={faUser} />,
+        title: 'View profile',
+        to: '/@hoaa',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCoins} />,
+        title: 'Get coins',
+        to: '/coin',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faGear} />,
+        title: 'Settings',
+        to: '/settings',
+    },
+    ...MENU_ITEMS,
+    {
+        icon: <FontAwesomeIcon icon={faSignOut} />,
+        title: 'Log out',
+        to: '/logout',
+        // Dùng để css cho vạch nằm ngang trước logout
+        separate: true,
+    },
+];
+
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
 
@@ -90,15 +123,18 @@ function Header() {
             default:
         }
     };
+    const current_user = true;
 
     // Vì Css module nên tên class đặt giống nhau vẫn oke, cứ thẻ to nhất đặt wrap
     return (
         <header className={cx('wrap')}>
+            {/* Giao diện Header gồm 3 phần : */}
             <div className={cx('inner')}>
-                {/* Logo */}
+                {/* Phần 1: Logo */}
                 <img src={images.logo} alt="tiktok" />
-                {/* search */}
-                <Tippy
+
+                {/* Phần 2: search input */}
+                <HeadlessTippy
                     interactive // để khi nhấp vào nội dung bên trong tippy có thể tương tác được như bôi đen
                     visible={searchResult.length > 0}
                     render={(attrs) => (
@@ -127,21 +163,38 @@ function Header() {
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                     </div>
-                </Tippy>
-                {/* actions */}
-                <div className="actions">
-                    <Button text>Upload</Button>
-                    <Button
-                        primary
-                        // rightIcon={<FontAwesomeIcon icon={faSignIn} />}
-                    >
-                        Log in
-                    </Button>
+                </HeadlessTippy>
+
+                {/* Phần 3:  Hiển thị các button chỗ login hoặc không login */}
+                <div className={cx('actions')}>
+                    {current_user ? (
+                        <>
+                            <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                </button>
+                            </Tippy>
+                        </>
+                    ) : (
+                        <>
+                            <Button text>Upload</Button>
+                            <Button primary>Log in</Button>
+                        </>
+                    )}
+
                     {/* Button 3 chấm hiện menu setting */}
-                    <Menu items={MENU_ITEMS} onChange={handleOnChangeMenu}>
-                        <button className={cx('more-btn')}>
-                            <FontAwesomeIcon icon={faEllipsisVertical} />
-                        </button>
+                    <Menu items={current_user ? userMenu : MENU_ITEMS} onChange={handleOnChangeMenu}>
+                        {current_user ? (
+                            <img
+                                className={cx('user-avatar')}
+                                src="https://lh3.googleusercontent.com/ogw/AOh-ky3BxL-ZrdkYKD69QPzml0Ur0Z9NC-T4B8o6ZdhK=s32-c-mo"
+                                alt="Nguyen Van A"
+                            />
+                        ) : (
+                            <button className={cx('more-btn')}>
+                                <FontAwesomeIcon icon={faEllipsisVertical} />
+                            </button>
+                        )}
                     </Menu>
                 </div>
             </div>

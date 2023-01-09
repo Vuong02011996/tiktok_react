@@ -17,7 +17,10 @@
     -   Phân tích khi chỉ vô hiện memu thì dùng tippy. Component menu dùng tippy nên có thể viết trong component Popper.
     -   Những element(button 3 chấm) dùng trong component riêng (Menu Tippy)nhưng vị trí là một component khác (button 3 chấm của header) thì thêm props children cho component Menu Tippy để thêm element từ bên ngoài vào.(component Menu cần children button từ header đưa vào)
 -   `Cách chia component`:
+
     -   MenuItem trong component Menu có thể có nhiều loại menuItem khác nhau , nội dụng khác nhau nên tạo thêm component MenuItem riêng và truyền vào component Menu chớ không nên viết chung vô component Menu. Và những component MenuItem sẽ đều dùng trong component Menu nên viết chung trong folder Menu và import bằng `./` và viết chung CSS với trong component Menu.
+
+-   Cách thay đổi giao diện header khi có login hoặc không, khi có login thì sẽ có `biến current_user` dựa vào biến này để hiển thị giao diện header là đã login hay chưa login.
 
 ## Button
 
@@ -63,7 +66,7 @@
 ## Array:
 
 -   Lặp tất cả key của một object: `Object.keys(props).forEach()`
--   Xoá phần tử cuối cùng và trả về những phần tử chưa xóa: `history.slice(0, history.length - 1)`
+-   Xoá phần tử cuối cùng và trả về những phần tử chưa xóa: `history.slice(0, history.length - 1)` - cắt mảng
 
 # Thư viện
 
@@ -72,6 +75,9 @@
 -   Sử dụng cho các popover, dropdown, ...khi hover
 -   Khi chỉ vô hiện Menu.
 -   import Tippy -> Dùng component này bọc lại element muốn rê vào hiện menu lên.
--   Thay đổi vị trí dùng props `placement`:bottom-end
--   Animation ẩn hiện: delay = [show, hide] = [0, 700]; 700ms
+-   Các props hay sử dụng:
+    -   Thay đổi vị trí dùng props `placement:bottom-end`
+    -   Animation ẩn hiện: `delay = [show, hide] = [0, 700]`; 700ms
+    -   Khi ẩn tippy đi thì làm gì: `onHide={callback}`
+    -   Dịch chuyển khung tippy: ` offset={[14, 8]}` dịch sang phải 14px, xuống dưới 8px.
 -   https://github.com/atomiks/tippyjs-react

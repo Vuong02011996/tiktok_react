@@ -49,6 +49,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
             interactive // để khi nhấp vào nội dung bên trong tippy có thể tương tác được như bôi đen
             placement="bottom-end"
             delay={[0, 700]}
+            offset={[14, 8]}
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
                     <PopperWrapper className={cx('menu-popper')}>
@@ -65,6 +66,10 @@ function Menu({ children, items = [], onChange = defaultFn }) {
                     </PopperWrapper>
                 </div>
             )}
+            // để hover ra ngoài biến mất khi hiện lên lại sẽ chỉ có phần tử đầu tiên
+            onHide={() => {
+                setHistory((prev) => prev.slice(0, 1));
+            }}
         >
             {children}
         </Tippy>
