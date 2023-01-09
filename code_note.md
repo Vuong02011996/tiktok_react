@@ -54,12 +54,16 @@
 
 -   ` Custom button css selector`: nếu css không ăn do độ ưu tiên thì viết bên trong thẻ bao bọc để thêm điểm độ ưu tiên cao hơn khi với css trong component button.
 -   `Hiển thị list có icon`: kích thước mỗi icon khác nhau dấn đến vị trí title phía sau sẽ bị thay đổi. Do đó phải set kích thước cố định cho tất cả các icon. Để set được width phải có display.
+-   Title của header menu cố định một chỗ khi cuộn nên dùng `position: absolute;`
 
 # Code JS
+
+-   Mẹo convert một biến khác undefine sang true: `!!item.children`, nếu undefine sẽ là false.
 
 ## Array:
 
 -   Lặp tất cả key của một object: `Object.keys(props).forEach()`
+-   Xoá phần tử cuối cùng và trả về những phần tử chưa xóa: `history.slice(0, history.length - 1)`
 
 # Thư viện
 
