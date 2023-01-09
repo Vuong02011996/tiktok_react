@@ -21,7 +21,6 @@ function Button({
     onClick,
     ...passProps
 }) {
-    console.log('className', className);
     let Comp = 'button'; // mặc định là button, tùy vào prop to, href sẽ thay đổi thẻ a/button
     const classes = cx('wrapper', {
         primary,
@@ -37,9 +36,13 @@ function Button({
         onClick: onClick,
         ...passProps,
     };
+    // Remove event listener when btn is disabled
     if (disable) {
-        // bỏ luôn thuộc tính click disable button
-        delete props.onClick;
+        Object.keys(props).forEach((key) => {
+            if (key.startsWith('on') && typeof props[key] === 'function') {
+                delete props[key];
+            }
+        });
     }
 
     if (to) {
