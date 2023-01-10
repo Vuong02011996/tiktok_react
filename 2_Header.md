@@ -9,11 +9,11 @@
 -   Sử dụng `import classNames from 'classnames/bind';` bind object styles để viết tên class thoải mái không cần theo camelCase
 -   CSS cho layout chính, dùng flex.
 
-# Xây dựng ui cho header
+# 1 Xây dựng ui cho header
 
 ## Phân tích chia làm hai phần
 
--   Phần UI tĩnh
+-   Phần UI tĩnh: 3 Phần Logo-> Search Input -> Actions button.
 -   Phần UI động : khi hover chuột vào.
 
 ## UI tĩnh
@@ -28,3 +28,20 @@
     -   Cài thư viện fontwareisome vào để dùng icon.(copy tên thư viện vào package.json -> npm i lại )
     -   Cách dùng icon từ thư viện trong react. `<FontAwesomeIcon icon={faCircleXmark} />`. Search icon trên: https://fortawesome.com/
     -   CSS.
+
+# 2 Xây dựng logic cho phần Header.
+
+-   Có 3 Phần UI :
+    -   Phần logo không có logic
+    -   Phần search
+    -   Phần actions button
+
+## Search
+
+-   Gõ vào hiện nút close, bấm vào close sẽ xóa phần chữ gõ và focus vào thẻ input.
+    -   Two way biding: Khi input thay đổi thì state thay đổi, khi state thay đổi thì input cũng thay đổi.
+    -   Check state searchValue có giá trị hay không để handle logic.
+    -   Get DOM element của thẻ input để focus vào.
+-   Hiện tippy result search phải có hai điều kiện:
+    -   Có kết quả tìm kiếm: searchResult > 0
+    -   Có focus vào ô input : dùng state showResult

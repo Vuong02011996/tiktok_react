@@ -22,6 +22,8 @@
 
 -   Cách thay đổi giao diện header khi có login hoặc không, khi có login thì sẽ có `biến current_user` dựa vào biến này để hiển thị giao diện header là đã login hay chưa login.
 
+-   Từ button close muốn focus vào thẻ input khi click vào thì phải get được DOM element của thẻ input. Get DOM của một element trong React thì ta dùng hook useRef là nhanh nhất.
+
 # Component
 
 ## Button
@@ -33,6 +35,14 @@
 -   `forwardRef`: Thư viện tippy cần vị biết vị trí của element mà nó bao lại để hiển thị vị trí box.Mặc định các thẻ html (img) đã có thuộc tính ref, dựa vào đó tippy sẽ biết tọa độ element trong DOM. Còn component Image của chúng ta không có nên tippy sẽ báo warning nên ta cần forwardRef cho component Image. Có hai cách:
     -   Dùng HOC : `forwardRef(tên_component)`: vẫn còn warning thiếu ref
     -   Dùng cách 2: Trong Image component.
+
+## Search - kĩ thuật tách component để tối ưu hiệu suất khi render. Tránh render lại component bự.
+
+-   Ban đầu Phần search nằm trong component Header , do đó khi state của phần search thay đổi sẽ render lại cả component Header cả logo với actions button. Do đó nên tách compopent Search ra để chỉ render lại một component Search khi state phần search thay đổi.
+-   Cách tách (copy code) nhanh:
+    -   Tạo component mới (ffc) -> Tách JSX sang , copy những biến và state qua trước.
+    -   Copy nguyên phần import qua, xóa những import không dùng.
+    -   Copy CSS qua(chú ý CSS ở component bự phải luôn viết theo từng phần để dễ copy)
 
 # CSS
 

@@ -1,10 +1,6 @@
-import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    faCircleXmark,
-    faSpinner,
-    faMagnifyingGlass,
     faEllipsisVertical,
     faEarthAsia,
     faCircleQuestion,
@@ -14,18 +10,16 @@ import {
     faGear,
     faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
-import HeadlessTippy from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
 
-import { Wrapper as PopperWrapper } from '~/component/Popper';
 import Menu from '~/component/Popper/Menu';
 import Button from '~/component/Button';
-import AccountItem from '~/component/AccountItem';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import { InboxIcon, MessageIcon, UploadIcon } from '~/component/Icon';
 import Image from '~/component/Image';
+import Search from '../Search';
 
 // nếu không dùng bind cho styles thì className phải viết camelCase , thì styles mới chấm được.
 // Dùng bind ở đây để viết tên class thoải mái cx('post-item')
@@ -104,15 +98,6 @@ const userMenu = [
 ];
 
 function Header() {
-    const [searchResult, setSearchResult] = useState([]);
-
-    // Gọi API xử lí ở đây searchResult
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([]);
-        }, 0);
-    }, []);
-
     const handleOnChangeMenu = (menuItem) => {
         // Xử lí khi click vào Item nào.
         // Dựa vào type để biết là MenuItem của trang nào.
@@ -135,36 +120,7 @@ function Header() {
                 <img src={images.logo} alt="tiktok" />
 
                 {/* Phần 2: search input */}
-                <HeadlessTippy
-                    interactive // để khi nhấp vào nội dung bên trong tippy có thể tương tác được như bôi đen
-                    visible={searchResult.length > 0}
-                    render={(attrs) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <PopperWrapper>
-                                <h4 className={cx('search-title')}>Accounts</h4>
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                                <AccountItem />
-                            </PopperWrapper>
-                        </div>
-                    )}
-                >
-                    <div className={cx('search')}>
-                        <input placeholder="Search accounts and videos" spellCheck={false} />
-                        <button className={cx('clear')}>
-                            {/* Clear icon */}
-                            <FontAwesomeIcon icon={faCircleXmark} />
-                        </button>
-                        {/* Loading */}
-                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-
-                        <button className={cx('search-btn')}>
-                            {/* Search */}
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
-                    </div>
-                </HeadlessTippy>
+                <Search />
 
                 {/* Phần 3:  Hiển thị các button chỗ login hoặc không login */}
                 <div className={cx('actions')}>
