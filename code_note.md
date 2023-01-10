@@ -22,9 +22,17 @@
 
 -   Cách thay đổi giao diện header khi có login hoặc không, khi có login thì sẽ có `biến current_user` dựa vào biến này để hiển thị giao diện header là đã login hay chưa login.
 
+# Component
+
 ## Button
 
 -   Viết một chung một component và thêm các props để thay đổi mỗi loại button(size, màu sắc, border, ...).
+
+## Image
+
+-   `forwardRef`: Thư viện tippy cần vị biết vị trí của element mà nó bao lại để hiển thị vị trí box.Mặc định các thẻ html (img) đã có thuộc tính ref, dựa vào đó tippy sẽ biết tọa độ element trong DOM. Còn component Image của chúng ta không có nên tippy sẽ báo warning nên ta cần forwardRef cho component Image. Có hai cách:
+    -   Dùng HOC : `forwardRef(tên_component)`: vẫn còn warning thiếu ref
+    -   Dùng cách 2: Trong Image component.
 
 # CSS
 
@@ -62,6 +70,7 @@
 # Code JS
 
 -   Mẹo convert một biến khác undefine sang true: `!!item.children`, nếu undefine sẽ là false.
+-   Code ES6 đổi tên tham số khi truyền vào hàm(fallback->customFallBack): `fallback: customFallBack = images.noImage`
 
 ## Array:
 

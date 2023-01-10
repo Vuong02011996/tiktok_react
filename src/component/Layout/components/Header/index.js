@@ -13,7 +13,6 @@ import {
     faCoins,
     faGear,
     faSignOut,
-    faCloudUpload,
 } from '@fortawesome/free-solid-svg-icons';
 import HeadlessTippy from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
@@ -25,6 +24,8 @@ import Button from '~/component/Button';
 import AccountItem from '~/component/AccountItem';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
+import { InboxIcon, MessageIcon, UploadIcon } from '~/component/Icon';
+import Image from '~/component/Image';
 
 // nếu không dùng bind cho styles thì className phải viết camelCase , thì styles mới chấm được.
 // Dùng bind ở đây để viết tên class thoải mái cx('post-item')
@@ -169,9 +170,20 @@ function Header() {
                 <div className={cx('actions')}>
                     {current_user ? (
                         <>
-                            <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
+                            <Tippy delay={[0, 50]} content="Upload video" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                    <UploadIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy delay={[0, 50]} content="Message" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <MessageIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy delay={[0, 50]} content="Inbox" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <InboxIcon />
+                                    <span className={cx('badge')}>12</span>
                                 </button>
                             </Tippy>
                         </>
@@ -185,7 +197,7 @@ function Header() {
                     {/* Button 3 chấm hiện menu setting */}
                     <Menu items={current_user ? userMenu : MENU_ITEMS} onChange={handleOnChangeMenu}>
                         {current_user ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
                                 src="https://lh3.googleusercontent.com/ogw/AOh-ky3BxL-ZrdkYKD69QPzml0Ur0Z9NC-T4B8o6ZdhK=s32-c-mo"
                                 alt="Nguyen Van A"
