@@ -19,3 +19,14 @@
 
 -   Search create placehoder image online https://placeholder.imageonline.co/, tạo image rồi tải về.
 -   Nén image để giảm kích dung lượng ảnh , để trường hợp nhiều ảnh sẽ load nặng. https://tinypng.com/(2.1kB-> 624B). Download về replace image cũ.
+
+# Các khái niệm liên quan đến API vào gọi API trong FE và BE.
+
+-   Các thành phần trong một API quy ước: `https://tiktok.fullstack.edu.vn/api/users/search?q=i&type=less`:
+    -   `https`: phương thức. Sau phương là `://`
+    -   `tiktok.fullstack.edu.vn`: host name
+    -   `/api/users/search`: path
+    -   `?`: phần ngăn cách
+    -   `q=i&type=less`: query parameters - tham số tìm kiếm: cú pháp là cặp `key=value`. Nếu có nhiều cặp key=value thì ngăn cách các cặp bằng dấu `&`
+-   Ở bài này có cặp `type=less` do người làm API thiết kế: có hai type ở đây `type=less`: lấy về tối đa 5 kết quả, `type=more`: trả về 10 kết quả tìm kiếm và có thêm thông tin phân trang để gọi lúc bấm vô icon kính search-> click accounts.
+-   Cách xem lỗi, payload, của network trên devtools, ..

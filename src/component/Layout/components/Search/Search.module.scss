@@ -60,6 +60,21 @@
     background-color: transparent;
 }
 
+.loading {
+    // infinite: quay không giới hạn số lần
+    // animation: name duration kiểu ...a
+    animation: spinner 2s linear infinite;
+}
+@keyframes spinner {
+    from {
+        // translateY(-50%) để tránh ghi đè transform ở css loading phía trên
+        transform: translateY(-50%) rotate(0);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
 .search-btn {
     width: var(--search-button-width);
     height: 100%;

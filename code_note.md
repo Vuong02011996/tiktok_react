@@ -87,6 +87,18 @@
 -   Lặp tất cả key của một object: `Object.keys(props).forEach()`
 -   Xoá phần tử cuối cùng và trả về những phần tử chưa xóa: `history.slice(0, history.length - 1)` - cắt mảng
 
+## API
+
+-   Gọi API: Dùng template string để gọi api với tham số thay đổi.
+    -   `https://tiktok.fullstack.edu.vn/api/users/search?q=${searchValue}&type=less`
+    -   Chú ý check các trường hợp người dùng nhập vào: space, ?, & , ... sử dụng `encodeURIComponent` để chuyển các kí tự đặc biệt sang %number.
+-   Kĩ thuật `debounce`: khi có một chuối hành động diễn ra chỉ lấy hành động sau cùng.gọi API với hành động cuối cùng.
+
+## Router DOM
+
+-   Đổi element (thẻ div) sang thẻ router-dom Link với to
+-   `{ path: '/@:nickname', component: Profile },` cách config router với patern(nickname) thay đổi
+
 # Thư viện
 
 ## tippyjs react

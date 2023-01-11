@@ -43,5 +43,10 @@
     -   Check state searchValue có giá trị hay không để handle logic.
     -   Get DOM element của thẻ input để focus vào.
 -   Hiện tippy result search phải có hai điều kiện:
+
     -   Có kết quả tìm kiếm: searchResult > 0
     -   Có focus vào ô input : dùng state showResult
+
+-   Xử lí phần gõ vào input liên tục gọi API: sử dụng `useDebounce`
+    -   Sẽ sinh ra các vấn đề như: API request liên tục lên server , mạng chập chờn làm api gọi sau xong trước api gọi trước nên hiển thị kết quả sai, ...
+    -   Dùng kĩ thuật `debounce` khi người dùng ngừng gõ từ 500ms -> 800ms

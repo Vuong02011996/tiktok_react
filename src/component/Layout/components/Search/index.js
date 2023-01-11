@@ -9,6 +9,7 @@ import { Wrapper as PopperWrapper } from '~/component/Popper';
 import AccountItem from '~/component/AccountItem';
 import styles from './Search.module.scss';
 import { SearchIcon } from '~/component/Icon';
+import { useDebounce } from '~/hooks';
 
 const cx = classNames.bind(styles);
 
@@ -18,15 +19,37 @@ function Search() {
     const [searchResult, setSearchResult] = useState([]);
     // state để show search result khi focus vào thẻ input
     const [showResult, setShowResult] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const inputRef = useRef();
 
-    // Gọi API xử lí ở đây searchResult
+    const debouncedValue = useDebounce(searchValue, 500);
+    console.log('debouncedValue return: ', debouncedValue);
+
+    // Gọi API xử lí ở đây mỗi khi có input nhập vào thay đổi(gõ vào ô input,)
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1]);
-        }, 0);
-    }, []);
+        // Check searchValue bằng chuỗi rỗng lần đầu tiên và trường hợp chỉ gõ toàn space
+        // API này sẽ lỗi nếu q không có giá trị hoặc rỗng.
+        if (!debouncedValue.trim()) {
+            // Nếu searchValue không có giá trị sẽ chạy vào đây
+            setSearchResult([]);
+            return;
+        }
+
+        setLoading(true);
+        console.log('Goi API: ', debouncedValue);
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debouncedValue)}&type=less`)
+            .then((res) => {
+                return res.json();
+            })
+            .then((res) => {
+                console.log('(res.data: ', res.data);
+                setSearchResult(res.data);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    }, [debouncedValue]);
 
     // Sẽ tối ưu sử dụng useCallBack với những function này
     const handleClearInput = () => {
@@ -49,10 +72,10 @@ function Search() {
                 <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                     <PopperWrapper>
                         <h4 className={cx('search-title')}>Accounts</h4>
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
+
+                        {searchResult.map((result) => {
+                            return <AccountItem key={result.id} data={result} />;
+                        })}
                     </PopperWrapper>
                 </div>
             )}
@@ -71,7 +94,7 @@ function Search() {
                     onFocus={() => setShowResult(true)}
                 />
                 {/* Handle logic: nếu có chữ trên thẻ input mới hiển thị button close */}
-                {!!searchValue && (
+                {!!searchValue && !loading && (
                     <button className={cx('clear')} onClick={handleClearInput}>
                         {/* Clear icon */}
                         <FontAwesomeIcon icon={faCircleXmark} />
@@ -79,7 +102,7 @@ function Search() {
                 )}
 
                 {/* Loading */}
-                {/* <FontAwesomeIcon className={cx('loading')} icon={faSpinner} /> */}
+                {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
 
                 <button className={cx('search-btn')}>
                     {/* Search */}
