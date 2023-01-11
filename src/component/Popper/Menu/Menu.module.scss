@@ -22,9 +22,14 @@
     }
 }
 
+.menu_body {
+    overflow-y: auto;
+}
+
 // Header Menu
 .header {
     position: relative;
+    flex-shrink: 0;
     height: 50px;
     margin-top: -8px;
 }

@@ -12,6 +12,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
+import { Link } from 'react-router-dom';
 
 import Menu from '~/component/Popper/Menu';
 import Button from '~/component/Button';
@@ -20,6 +21,7 @@ import images from '~/assets/images';
 import { InboxIcon, MessageIcon, UploadIcon } from '~/component/Icon';
 import Image from '~/component/Image';
 import Search from '../Search';
+import configRoutes from '~/config/routes';
 
 // nếu không dùng bind cho styles thì className phải viết camelCase , thì styles mới chấm được.
 // Dùng bind ở đây để viết tên class thoải mái cx('post-item')
@@ -51,6 +53,81 @@ const MENU_ITEMS = [
                     //         },
                     //     ],
                     // },
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
                 },
                 {
                     type: 'language',
@@ -117,7 +194,9 @@ function Header() {
             {/* Giao diện Header gồm 3 phần : */}
             <div className={cx('inner')}>
                 {/* Phần 1: Logo */}
-                <img src={images.logo} alt="tiktok" />
+                <Link to={configRoutes.home} className={cx('logo')}>
+                    <img src={images.logo} alt="tiktok" />
+                </Link>
 
                 {/* Phần 2: search input */}
                 <Search />

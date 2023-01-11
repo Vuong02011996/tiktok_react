@@ -21,7 +21,7 @@ const cx = classNames.bind(styles);
 // để không bị lỗi khi không truyền onChange ở Menu
 const defaultFn = () => {};
 
-function Menu({ children, items = [], onChange = defaultFn }) {
+function Menu({ children, items = [], onChange = defaultFn, hideOnClick = false }) {
     const [history, setHistory] = useState([{ data: items }]);
     const currentMenu = history[history.length - 1];
     const renderItem = () => {
@@ -62,7 +62,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
                                 }}
                             />
                         )}
-                        {renderItem()}
+                        <div className={cx('menu_body')}>{renderItem()}</div>
                     </PopperWrapper>
                 </div>
             )}
@@ -70,6 +70,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
             onHide={() => {
                 setHistory((prev) => prev.slice(0, 1));
             }}
+            hideOnClick={hideOnClick}
         >
             {children}
         </Tippy>

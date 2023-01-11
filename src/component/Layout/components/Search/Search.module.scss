@@ -14,7 +14,6 @@
     display: flex;
     // để thẻ search không bị to lên khi focus-within vào
     border: 1.5px solid transparent;
-
     // CSS module
     input {
         flex: 1;
@@ -23,6 +22,7 @@
         color: var(--black-color);
         background-color: transparent;
         caret-color: var(--primary);
+        font-family: var(--font-family);
     }
 
     input:not(:placeholder-shown) ~ .search-btn {

@@ -77,6 +77,10 @@
 -   `Hiển thị list có icon`: kích thước mỗi icon khác nhau dấn đến vị trí title phía sau sẽ bị thay đổi. Do đó phải set kích thước cố định cho tất cả các icon. Để set được width phải có display.
 -   Title của header menu cố định một chỗ khi cuộn nên dùng `position: absolute;`
 
+-   Khi display flex, item có nội dung nhiều sẽ cố gắng chiếm diện tích làm những phần khác co lại(header trong menu đa cấp) do đó để không cho co lại ta dùng `flex-shinks: 0` cho header.
+-   `overflow-y: auto;`: enable khi cuộn thẻ div. Dùng `overflow-y: overlay` khi muốn phần thanh cuộn nổi lên trên và không có khoảng cách với content bên trái.
+-   Cách copy CSS của thanh scrollbar trên tiktok -> nằm trên thẻ body.
+
 # Code JS
 
 -   Mẹo convert một biến khác undefine sang true: `!!item.children`, nếu undefine sẽ là false.
@@ -94,6 +98,25 @@
     -   Chú ý check các trường hợp người dùng nhập vào: space, ?, & , ... sử dụng `encodeURIComponent` để chuyển các kí tự đặc biệt sang %number.
 -   Kĩ thuật `debounce`: khi có một chuối hành động diễn ra chỉ lấy hành động sau cùng.gọi API với hành động cuối cùng.
 
+-   `Axios`:
+
+    -   Các cách gọi API: XMLHttpRequest, fetch, ...
+    -   Các thư viện tương tự `superagent`(https://github.com/ladjs/superagent), ...
+    -   Axios tự động parse json nên ít hơn 1 `.then` so với fetch.
+    -   Cách dùng:
+
+        -   `const axios = require('axios')` CommomJS chuyển sang ES6 `import axios from 'axios';`
+
+    -   Các tính năng:
+
+        -   Tạo `instance`: dùng để custom config khi gọi nhiều domain API trong một trang web, mỗi instance để config cho một domain.
+        -   `Config default`: Login xử lí token, config header, ..
+        -   `Interceptors`: biết người dùng hết quyền đăng nhập hay chưa, ..
+
+    -   Format source code:
+        -   `request axios` của `utils` sẽ được dùng ở `apiServices` chớ không dùng ở component, component sẽ dùng các service ở apiServices để gọi API.
+        -   `import * as request from '~/utils/request';` export lẻ thì dùng `*` để đưa vào object `request` rồi chấm.
+
 ## Router DOM
 
 -   Đổi element (thẻ div) sang thẻ router-dom Link với to
@@ -107,8 +130,22 @@
 -   Khi chỉ vô hiện Menu.
 -   import Tippy -> Dùng component này bọc lại element muốn rê vào hiện menu lên.
 -   Các props hay sử dụng:
+
     -   Thay đổi vị trí dùng props `placement:bottom-end`
     -   Animation ẩn hiện: `delay = [show, hide] = [0, 700]`; 700ms
     -   Khi ẩn tippy đi thì làm gì: `onHide={callback}`
     -   Dịch chuyển khung tippy: ` offset={[14, 8]}` dịch sang phải 14px, xuống dưới 8px.
+    -   Click vào không ẩn khung tippy: `hideOnClick	: false`
+
+-   `Error:`:
+    -   1.  Warning: Interactive tippy element may not be accessible. Using a wrapper <div> or <span> tag around the reference element solves this by creating a new parentNode context.
+        -   Thêm props: `appendTo={() => document.body}`. Cách 1 khi scrollbar bị dựt dựt tippy.
+        -   Cách 2: dùng thẻ div hoặc span bọc lại thẻ tippy.
+    -   2.
 -   https://github.com/atomiks/tippyjs-react
+
+# Tree
+
+-   `src/routes`: xác định những tuyến đường đi đâu
+-   `config/routes.js`: define những tuyến đường, tránh hardcode tuyến đường trong các components.
+-   Đổi `favicon.ico`, title page trong thư mục public/index.html, `public/favicon.icon`

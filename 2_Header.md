@@ -50,3 +50,14 @@
 -   Xử lí phần gõ vào input liên tục gọi API: sử dụng `useDebounce`
     -   Sẽ sinh ra các vấn đề như: API request liên tục lên server , mạng chập chờn làm api gọi sau xong trước api gọi trước nên hiển thị kết quả sai, ...
     -   Dùng kĩ thuật `debounce` khi người dùng ngừng gõ từ 500ms -> 800ms
+
+# Fix lỗi
+
+-   Không cho gõ space
+-   Bấm vào button search -> focus vào ô input
+    -   không chuyển `&:focus-within` ra thẻ input được
+    -   Dùng onMounDown và prevenDefault
+-   Header không cố định có menu đa cấp có nhiều item.
+-   `Content menu đa cấp không cuộn` khi có nhiều nội dung do 2 nguyên nhân:
+    -   Không có height cố định
+    -   Nội dung cuộn là box con bên trong nhưng box cha không có display: flex;
