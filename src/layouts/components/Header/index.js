@@ -21,7 +21,7 @@ import images from '~/assets/images';
 import { InboxIcon, MessageIcon, UploadIcon } from '~/component/Icon';
 import Image from '~/component/Image';
 import Search from '../Search';
-import configRoutes from '~/config/routes';
+import config from '~/config';
 
 // nếu không dùng bind cho styles thì className phải viết camelCase , thì styles mới chấm được.
 // Dùng bind ở đây để viết tên class thoải mái cx('post-item')
@@ -53,81 +53,6 @@ const MENU_ITEMS = [
                     //         },
                     //     ],
                     // },
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    type: 'language',
-                    code: 'vi',
-                    title: 'Tiếng Việt',
                 },
                 {
                     type: 'language',
@@ -194,7 +119,7 @@ function Header() {
             {/* Giao diện Header gồm 3 phần : */}
             <div className={cx('inner')}>
                 {/* Phần 1: Logo */}
-                <Link to={configRoutes.home} className={cx('logo')}>
+                <Link to={config.routes.home} className={cx('logo')}>
                     <img src={images.logo} alt="tiktok" />
                 </Link>
 

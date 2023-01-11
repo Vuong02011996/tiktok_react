@@ -61,3 +61,10 @@
 -   `Content menu đa cấp không cuộn` khi có nhiều nội dung do 2 nguyên nhân:
     -   Không có height cố định
     -   Nội dung cuộn là box con bên trong nhưng box cha không có display: flex;
+
+# Tái cấu trúc và tối ưu code
+
+-   apiServices -> services
+-   src/components/Layout -> src/layouts
+-   Tạo file index trong routes config
+-   Tạo file env, đưa cấu hình baseUrl ra .env.development

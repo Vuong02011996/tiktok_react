@@ -1,4 +1,4 @@
-import Header from '~/component/Layout/components/Header';
+import Header from '~/layouts/components/Header';
 
 // Phần content có thể thay đổi ta đưa từ bên ngoài vào qua children
 // Header và sideBar là thành phần tĩnh

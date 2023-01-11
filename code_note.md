@@ -85,6 +85,20 @@
 
 -   Mẹo convert một biến khác undefine sang true: `!!item.children`, nếu undefine sẽ là false.
 -   Code ES6 đổi tên tham số khi truyền vào hàm(fallback->customFallBack): `fallback: customFallBack = images.noImage`
+-   `export { default, default as DefaultLayout } from './DefaultLayout'`: Cả hai đều export default nhưng một cái là nguyên tên gốc, một cái là tên mới.
+
+## Biến môi trường
+
+-   Có các loại môi trường:
+    -   local/development: .env.local/.env.development -> `hoạt động`
+    -   test/staging: .env.test/.env.staging -> `không hoạt động npm start, maybe  run npm test`
+    -   uat: chạy data giống production
+    -   production: .env.production -> `không hoạt đông ở npm start maybe npm run build`
+-   Trong react đã tự động cấu hình để load các biến môi trường trong file `.env...`. Phải đúng các .local, ...sai tên như locals sẽ không lấy được biến trong file .env
+-   Note that every variable you define should start with `REACT_APP_`
+-   Và ta có thể sử dụng thông qua biến: `process.env.REACT_APP_...`
+-   Có thể dùng thuộc tính `NODE_ENV: "development"` để check đang chạy ở môi trường nào.
+-   https://create-react-app.dev/docs/adding-custom-environment-variables/
 
 ## Array:
 

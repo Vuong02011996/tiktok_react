@@ -3,17 +3,17 @@ import Following from '~/pages/Following';
 import Profile from '~/pages/Profile';
 import Upload from '~/pages/Upload';
 import Search from '~/pages/Search';
-import { HeaderOnly } from '~/component/Layout';
-import configRoutes from '~/config/routes';
+import { HeaderOnly } from '~/layouts';
+import config from '~/config';
 
 const publicRoutes = [
-    { path: configRoutes.home, component: Home },
-    { path: configRoutes.following, component: Following },
+    { path: config.routes.home, component: Home },
+    { path: config.routes.following, component: Following },
     // { path: '/profile', component: Profile },
     // patern: chuỗi nickname có thể thay đổi, Chỗ Thẻ Link(Route dom) nào có thuộc tính to chưa cụm /@ sẽ nhảy tới trang profiles
-    { path: configRoutes.profile, component: Profile },
-    { path: configRoutes.upload, component: Upload, layout: null },
-    { path: configRoutes.search, component: Search, layout: HeaderOnly },
+    { path: config.routes.profile, component: Profile },
+    { path: config.routes.upload, component: Upload, layout: null },
+    { path: config.routes.search, component: Search, layout: HeaderOnly },
 ];
 const privateRoutes = [];
 export { publicRoutes, privateRoutes };
