@@ -38,6 +38,7 @@
 
 ## Search
 
+-   F5 không focus vào input.
 -   Gõ vào hiện nút close, bấm vào close sẽ xóa phần chữ gõ và focus vào thẻ input.
     -   Two way biding: Khi input thay đổi thì state thay đổi, khi state thay đổi thì input cũng thay đổi.
     -   Check state searchValue có giá trị hay không để handle logic.

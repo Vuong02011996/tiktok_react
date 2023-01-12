@@ -77,7 +77,6 @@ function Search() {
             setSearchValue(e.target.value);
         }
     };
-
     return (
         // Using a wrapper <div> or <span> tag around the reference element solves this by creating a new parentNode context.
         <div>
@@ -109,6 +108,7 @@ function Search() {
                         // khi focus vào thì cho tippy result
                         onFocus={() => setShowResult(true)}
                     />
+
                     {/* Handle logic: nếu có chữ trên thẻ input mới hiển thị button close */}
                     {!!searchValue && !loading && (
                         <button className={cx('clear')} onClick={handleClearInput}>

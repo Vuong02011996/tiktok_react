@@ -15,6 +15,8 @@
 
 -   Image component.
 
+# Webkit: safari/ chrome/ coccoc.
+
 # Tạo No Image trên web online và nén ảnh khi đưa lên web
 
 -   Search create placehoder image online https://placeholder.imageonline.co/, tạo image rồi tải về.

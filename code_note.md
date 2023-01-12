@@ -158,8 +158,31 @@
     -   2.
 -   https://github.com/atomiks/tippyjs-react
 
+## Props types
+
+-   `Kiểm tra kiểu dữ liệu props của component`(cả class và function)trong lúc ngay lúc chạy nên sẽ warning ngay lúc code.
+-   Ta sẽ viết code check props component trước khi export
+-   Cú pháp: `tên_component.propTypes = {truyền props muốn validate vào}`
+-   Các props đặc biệt:
+    -   `PropTypes.node`: dùng để check các props có thể render được(`ReactNode`): string, number, array, children, ...Những props không render được như function, class, ...
+    -   `PropTypes.element`: validate cho React element
+    -   `PropTypes.instanceOf`: validate function constructor như `Array`, `Number`, `String`, ...
+    -   `PropTypes.oneOf`: validate cho giá trị cố định.
+-   `isRequired`: những trường hợp ta dùng component như (`<Button></Button>`) sẽ không render gì cả vì không truyền gì thì là undefined mà undefined thì PropTypes sẽ không warning chỉ warning khi truyền sau kiểu. Do đó dùng thêm `isRequired`
+-   `impt`: dùng import nhanh.
+
+-   ` React.Children.only(children)`: validate component cha chỉ cho `một` chilren bên trong.
+
 # Tree
 
 -   `src/routes`: xác định những tuyến đường đi đâu
 -   `config/routes.js`: define những tuyến đường, tránh hardcode tuyến đường trong các components.
 -   Đổi `favicon.ico`, title page trong thư mục public/index.html, `public/favicon.icon`
+
+# Tối ưu useCallback, useMemo in component Menu
+
+-   TH nào sử dụng , TH nào không.
+
+# Clean code
+
+-   https://github.com/ryanmcdermott/clean-code-javascript

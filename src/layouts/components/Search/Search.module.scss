@@ -23,6 +23,8 @@
         background-color: transparent;
         caret-color: var(--primary);
         font-family: var(--font-family);
+        // Không cho phần text khi dài lộ ra chỗ button close
+        padding-right: 40px;
     }
 
     input:not(:placeholder-shown) ~ .search-btn {
